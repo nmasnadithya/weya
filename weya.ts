@@ -1,3 +1,5 @@
+import { JSDOM } from "jsdom";
+export const { document } = (new JSDOM(``)).window;
 
 const TAGS = {
   svg: "a altGlyph altGlyphDef altGlyphItem animate animateColor animateMotion animateTransform circle clipPath color-profile cursor defs desc ellipse feBlend feColorMatrix feComponentTransfer feComposite feConvolveMatrix feDiffuseLighting feDisplacementMap feDistantLight feFlood feFuncA feFuncB feFuncG feFuncR feGaussianBlur feImage feMerge feMergeNode feMorphology feOffset fePointLight feSpecularLighting feSpotLight feTile feTurbulence filter font font-face font-face-format font-face-name font-face-src font-face-uri foreignObject g glyph glyphRef hkern image line linearGradient marker mask metadata missing-glyph mpath path pattern polygon polyline radialGradient rect script set stop style svg symbol text textPath title tref tspan use view vkern switch foreignObject",
@@ -61,11 +63,11 @@ function getParameters(args: WeyaElementArg[]) {
     attrs: AttributesInterface | null,
     func: WeyaTemplateFunction | null
   } = {
-    idClass: null,
-    text: null,
-    attrs: null,
-    func: null
-  };
+      idClass: null,
+      text: null,
+      attrs: null,
+      func: null
+    };
   let first: boolean = true
   for (let arg of args) {
     switch (typeof arg) {
@@ -231,7 +233,7 @@ export interface WeyaOptions {
 }
 
 export let Weya = function (options: WeyaOptions, func: WeyaTemplateFunction)
-  : HTMLElement | undefined{
+  : HTMLElement | undefined {
   let weya = WEYA_DOM
   let pContext = weya.context;
   weya.context = options.context;
